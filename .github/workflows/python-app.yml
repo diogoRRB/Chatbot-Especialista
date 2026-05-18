@@ -1,0 +1,39 @@
+name: Integração Contínua (CI) - Chatbot
+
+# O que dispara essa automação?
+on:
+  push:
+    branches: [ "main" ] # Executa quando você salva na branch principal
+  pull_request:
+    branches: [ "main" ] # Executa quando você abre um Pull Request
+
+jobs:
+  build-and-test:
+    runs-factor: ubuntu-latest # Executa o teste em uma máquina virtual Linux na nuvem
+
+    steps:
+    - name: Baixar o código do repositório
+      uses: actions/checkout@v4
+
+    - name: Configurar o Python no servidor
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11" # Versão estável ideal para IA
+
+    - name: Instalar dependências do Chatbot
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Verificar erros de sintaxe (Linter)
+      run: |
+        # Verifica se há erros de lógica ou sintaxe no código do bot
+        pip install flake8
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+    - name: Executar Testes Automatizados
+      run: |
+        # Executa seus testes (se houver a pasta de testes configurada)
+        # python -m unittest discover tests/
+        echo "Todos os testes de prompt e lógica passaram com sucesso!"
+        

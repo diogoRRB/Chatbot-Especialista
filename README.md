@@ -1,5 +1,6 @@
  Chatbot-Especialista
  Projeto de criação de uma Inteligência artificial focada em uma função especifica
+ 
   🎮 GameMaster AI - Chatbot Especialista em Games
 
 Este repositório contém o projeto de um Agente Conversacional Inteligente (Chatbot) focado no universo dos jogos eletrônicos, eSports e cultura pop gamer.

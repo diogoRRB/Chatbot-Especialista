@@ -2,7 +2,7 @@ import os
 from openai import OpenAI
 
 # Coloque sua chave da OpenAI aqui entre as aspas para o bot funcionar
-MINHA_CHAVE_OPENAI = "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" 
+MINHA_CHAVE_OPENAI = "" 
 
 # Configuração da conexão com a API
 api_key = MINHA_CHAVE_OPENAI or os.environ.get("OPENAI_API_KEY")
